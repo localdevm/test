@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ice_On_Wheels", "Ice_On_Wheels\Ice_On_Wheels.csproj", "{819EDDEF-0D59-4BD3-9CB0-2F781154F4AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{819EDDEF-0D59-4BD3-9CB0-2F781154F4AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{819EDDEF-0D59-4BD3-9CB0-2F781154F4AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{819EDDEF-0D59-4BD3-9CB0-2F781154F4AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{819EDDEF-0D59-4BD3-9CB0-2F781154F4AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {164ED03F-7579-4C38-A99B-52C222DCBBF3}
+	EndGlobalSection
+EndGlobal
