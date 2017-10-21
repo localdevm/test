@@ -11,7 +11,7 @@ namespace IceOnWheels.Models
         [Required]
         public int ID { get; set; }
         [Required]
-        public bool Type { get; set; } // bv 0 is customer , 1 is driver => kan ook met int of string 
+        public int Type { get; set; } // bv 0 is customer , 1 is driver => kan ook met bool of string 
     }
 
 }

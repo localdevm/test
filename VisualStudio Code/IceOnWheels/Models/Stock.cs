@@ -9,6 +9,6 @@ namespace IceOnWheels.Models
     public class Stock
     {
         [Required]
-        public int TypeIjs { get; set; } // dit of string type 
+        public string TypeIjs { get; set; } // dit of int type 
     }
 }

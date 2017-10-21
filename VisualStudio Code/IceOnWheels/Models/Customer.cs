@@ -11,14 +11,14 @@ namespace IceOnWheels.Models
         [Required]
         public int ID { get; set; }
         [Required]
-        public string Naam { get; set; }
+        public string Name { get; set; }
         [Required]
-        public string Adres { get; set; }
-        public int Telefoonnummer { get; set; }
-        public int Locatie { get; set; } // of public string locatie { get; set;} hangt ervan af ... int voor coordinaten --> string voor een straatnaam
+        public string Adress { get; set; }
+        public int Telephonennumber { get; set; }
+        public string Location { get; set; } // of public int locatie { get; set;} hangt ervan af ... int voor coordinaten --> string voor een straatnaam
 
         [DataType(DataType.Date)]
-        public DateTime Reservering { get; set; }
+        public DateTime reservation { get; set; }
 
         public ICollection<User> Users { get; set; }
 
