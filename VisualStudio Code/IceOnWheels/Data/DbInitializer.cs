@@ -12,7 +12,7 @@ namespace IceOnWheels.Data
         {
             context.Database.EnsureCreated();
 
-            if (context.Drivers.Any()){
+            if (context.Users.Any()){
                 return;
             }
 
