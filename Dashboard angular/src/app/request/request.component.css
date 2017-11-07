@@ -1,9 +1,10 @@
 .wrapper {
     background-size: 200% 100% !important;
-    background: linear-gradient(30deg, #49D49D 15%, #A2C7E5 85%);
+    background: linear-gradient(30deg, #49D49D 15%, rgb(157, 213, 255) 85%);
     transform: translate3d(0,0,0);
-    animation: move 5s ease;
-    height: 500px;
+    animation: move 10s ease infinite;
+    height: 1080px;
+    box-sizing: border-box;
 }
 
 .insidewrap{
@@ -14,9 +15,61 @@
 
 .title{
     margin-top: 0;
-    padding-top: 20px;
+    padding-top: 50px;
     color: white;
     text-transform: uppercase;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
+}
+
+.iform{
+    display: inline-block;
+    text-align: center;
+}
+
+form{
+    margin-top: 50px;
+}
+
+.inputtext{
+    display: block;
+    width: 400px;
+    border: 0;
+    outline: 0;
+    -webkit-appearance: none;
+    font-family: "Roboto";
+    height: 60px;
+    padding-left: 20px;
+}
+
+.inputtext:first-of-type{
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.inputfirst{
+    margin-top: 100px;
+    
+}
+
+.inputtext :focus{
+    background-color: #fff 3%;
+}
+
+.inputbutton{
+    display: block;
+    -webkit-appearance: none;
+    transition: 0.3s;
+    border: 0;
+    outline: 0;
+    width: 400px;
+    height: 50px;
+    border: none;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+.inputbutton:hover {
+        background: #3a3939;
+        color: white;
+        transition: 1s;
 }
