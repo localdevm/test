@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -8,6 +10,20 @@ import { FooterComponent } from './footer/footer.component';
 import { RequestComponent } from './request/request.component';
 import { BannerComponent } from './banner/banner.component';
 import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+
+const routes: Routes = [
+ {
+   path: 'home', component: HomeComponent
+ },
+ {
+   path: 'request', component: RequestComponent
+ },
+ {
+   path: '**', component: NotFoundComponent
+ }
+]
 
 @NgModule({
   declarations: [
@@ -17,10 +33,14 @@ import { RegisterComponent } from './register/register.component';
     FooterComponent,
     RequestComponent,
     BannerComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent,
+    NotFoundComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule,
+    RouterModule.forRoot(routes),
   ],
   providers: [],
   bootstrap: [AppComponent]
