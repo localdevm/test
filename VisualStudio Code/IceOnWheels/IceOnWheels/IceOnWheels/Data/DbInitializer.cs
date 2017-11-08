@@ -12,10 +12,10 @@ namespace IceOnWheels.Data
         {
             context.Database.EnsureCreated();
 
-            if (context.Users.Any()){
+           if (context.Users.Any()){
                 return;
             }
-
+            
             context.Users.AddRange(
                 new User
                 {
@@ -48,7 +48,7 @@ namespace IceOnWheels.Data
                     Adress = "StrontAkker 22",
                     ID = 1,
                     Name = "peter de ijsjeslikker" ,
-                    Telephonennumber = 0465870942,
+                    Telephonenumber = 0465870942,
                     reservation = DateTime.Parse("2017-12-03"),
                     Location = "StrontAkker 22"
                 });

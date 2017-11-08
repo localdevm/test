@@ -8,6 +8,7 @@ namespace IceOnWheels.Models
 {
     public class Event
     {
+        [Key]
         [Required]
         public int ID { get; set; }
         [Required]

@@ -8,6 +8,7 @@ namespace IceOnWheels.Models
 {
     public class Stock
     {
+        [Key]
         [Required]
         public int ID { get; set; }
         [Required]

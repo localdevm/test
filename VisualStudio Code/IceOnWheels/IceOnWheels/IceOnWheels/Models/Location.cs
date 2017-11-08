@@ -8,6 +8,7 @@ namespace IceOnWheels.Models
 {
     public class Location
     {
+        [Key]
         [Required]
         public int LocationID { get; set; }
         [DataType(DataType.Date)]

@@ -8,6 +8,7 @@ namespace IceOnWheels.Models
 {
     public class Driver
     {
+        [Key]
         [Required]
         public int ID { get; set; }
         [Required]
