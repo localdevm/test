@@ -26,6 +26,7 @@ namespace IceOnWheels
         {
             services.AddDbContext<OrderContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            
             services.AddMvc();
         }
 
