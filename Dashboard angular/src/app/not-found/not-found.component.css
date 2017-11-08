@@ -52,7 +52,7 @@
 .btnnfound:hover{
     background: #333333;
     color: #ffffff;
-    transition: ease 0.5s;   
+    transition: ease 0.5    s;   
 }
 
 .center-block {

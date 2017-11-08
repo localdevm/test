@@ -1,0 +1,9 @@
+.wrapper{
+    margin: 0 auto;
+    background-size: 200% 100% !important;
+    background: linear-gradient(45deg, #72B01D 10% , #F5BB00 90%);
+    height: 587px;
+    transform: translate3d(0,0,0);
+    animation: move 10s ease infinite;
+    box-sizing: border-box;
+}
