@@ -8,11 +8,15 @@ namespace IceOnWheels.Models
 {
     public class Location
     {
-        [Key]
-        [Required]
+  
+     
         public int LocationID { get; set; }
+        
+        public double Longtitude { get; set; }
+        public double Latitude { get; set; }
+        public string StraatNaam { get; set; }
         [DataType(DataType.Date)]
-        [Required]
         public DateTime Timestamp { get; set; }
+
     }
 }

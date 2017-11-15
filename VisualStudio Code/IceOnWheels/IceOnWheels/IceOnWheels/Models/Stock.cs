@@ -8,14 +8,14 @@ namespace IceOnWheels.Models
 {
     public class Stock
     {
-        [Key]
-        [Required]
-        public int ID { get; set; }
-        [Required]
+  
+     
+        public int StockID { get; set; }
+        
         public string TypeIjs { get; set; } // dit of int type 
-        [Required]
+       
         public int Quantity { get; set; }
-        [Required]
+       
         public string supplementen { get; set; }
 
     }

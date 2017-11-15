@@ -8,12 +8,13 @@ namespace IceOnWheels.Models
 {
     public class Customer
     {
-        [Key]
-        [Required]
-        public int ID { get; set; }
-        [Required]
-        public string Name { get; set; }
-        [Required]
+        
+     
+        public int CustomerID { get; set; }
+      
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        
         public string Adress { get; set; }
         public int Telephonenumber { get; set; }
         public string Location { get; set; } // of public int locatie { get; set;} hangt ervan af ... int voor coordinaten --> string voor een straatnaam
@@ -21,7 +22,9 @@ namespace IceOnWheels.Models
         [DataType(DataType.Date)]
         public DateTime reservation { get; set; }
 
-        public ICollection<User> Users { get; set; }
+        public User user { get; set; }
+        public ICollection<Event> Events { get; set; }
+      
 
     }
 }

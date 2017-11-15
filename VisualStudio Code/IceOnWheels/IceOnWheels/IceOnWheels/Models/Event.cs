@@ -8,16 +8,17 @@ namespace IceOnWheels.Models
 {
     public class Event
     {
-        [Key]
-        [Required]
-        public int ID { get; set; }
-        [Required]
+      
+      
+        public int EventID { get; set; }
+       
         public bool DID { get; set; } // snap deze attribuut niet is dat een check of deze event is afgelopen ? 
-        [Required]
+      
         public string Location { get; set; } // hier weer gezamelijk afspreken welk type kan ook int zijn
         [DataType(DataType.Date)]
         public DateTime Reservation {get;set;}
 
-        public ICollection<Customer> Customers { get; set; }
+        public Customer customer { get; set; }
+        public Location location { get; set; }
     }
 }

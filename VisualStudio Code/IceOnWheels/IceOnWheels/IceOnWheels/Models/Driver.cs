@@ -8,18 +8,19 @@ namespace IceOnWheels.Models
 {
     public class Driver
     {
-        [Key]
-        [Required]
-        public int ID { get; set; }
-        [Required]
+       
+       
+        public int DriverID { get; set; }
+  
         public string Name { get; set; }
-        [Required]
+        
         public string Adress { get; set; }
         public int Phonenumber { get; set; }
-        [Required]
+       
         public bool Availibility { get; set; }
 
-        public ICollection<User> Users { get; set; }
+        public User user { get; set; }
+        public ICollection<Stock> stocks { get; set; }
 
     }
 }

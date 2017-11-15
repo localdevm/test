@@ -3,51 +3,62 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using IceOnWheels.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace IceOnWheels.Data
 {
-    public class DbInitializer
+    public class DbInitializer 
     {
         public static void Init(OrderContext context)
         {
             context.Database.EnsureCreated();
 
-           if (context.Users.Any()){
+          if (context.Users.Any()){
                 return;
             }
-            
+
+
             context.Users.AddRange(
                 new User
                 {
-                    Type = 1,
-                    ID = 1
+                    UserID = 2,
+                    Type = 1
+
                 },
                 new User
                 {
-                    Type = 2,
-                    ID = 2  
+                    UserID= 3,
+                    Type = 2
+                  
                 });
-
+               
             context.SaveChanges();
+
+            if (context.Drivers.Any())
+            {
+                return;
+            }
 
             context.Drivers.AddRange(
                 new Driver
                 {
                     Adress = "Bloemenlaan 12",
                     Availibility = true,
-                    ID = 2,
+                    DriverID = 2,
                     Name = "Joske",
                     Phonenumber = 0473586758
                 });
 
             context.SaveChanges();
 
+            
             context.Customers.AddRange(
                 new Customer
                 {
                     Adress = "StrontAkker 22",
-                    ID = 1,
-                    Name = "peter de ijsjeslikker" ,
+                    CustomerID = 1,
+                    FirstName = "peter" ,
+                    LastName = "de ijsjeslikker",
                     Telephonenumber = 0465870942,
                     reservation = DateTime.Parse("2017-12-03"),
                     Location = "StrontAkker 22"
@@ -55,14 +66,20 @@ namespace IceOnWheels.Data
 
             context.SaveChanges();
 
+           
+
             context.Stocks.AddRange(
                 new Stock
                 {
+                    StockID = 1,
+                    Quantity = 40,
+                    supplementen = "Slagroom",
                     TypeIjs = "Raketijs"
                 });
 
             context.SaveChanges();
 
+        
             context.Locations.AddRange(
                 new Location
                 {
@@ -73,10 +90,11 @@ namespace IceOnWheels.Data
 
             context.SaveChanges();
 
+           
             context.Events.AddRange(
                 new Event
                 {
-                    ID = 1,
+                    EventID = 1,
                     DID = false,
                     Location = "StrontAkker 22",
                     Reservation = DateTime.Parse("2017-12-03")
