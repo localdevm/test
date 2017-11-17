@@ -25,13 +25,13 @@ namespace IceOnWheels.Data
         {
            base.OnModelCreating(modelBuilder);
 
-           /* modelBuilder.Entity<User>().ToTable("User");
+            modelBuilder.Entity<User>().ToTable("User");
             modelBuilder.Entity<Driver>().ToTable("Driver");
             modelBuilder.Entity<Customer>().ToTable("Customer");
             modelBuilder.Entity<Event>().ToTable("Event");
             modelBuilder.Entity<Location>().ToTable("Location");
             modelBuilder.Entity<Stock>().ToTable("Stock");
-            */
+            
            
             
         }
