@@ -14,7 +14,8 @@ namespace IceOnWheels.Models
       
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        
+        public string Email { get; set; }
+        public string Password { get; set; }
         public string Adress { get; set; }
         public int Telephonenumber { get; set; }
         public string Location { get; set; } // of public int locatie { get; set;} hangt ervan af ... int voor coordinaten --> string voor een straatnaam

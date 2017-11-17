@@ -9,7 +9,7 @@ namespace IceOnWheels.Models
     public class Event
     {
       
-      
+        
         public int EventID { get; set; }
        
         public bool DID { get; set; } // snap deze attribuut niet is dat een check of deze event is afgelopen ? 
