@@ -14,7 +14,7 @@ namespace IceOnWheels.Models
        
         public bool DID { get; set; } // snap deze attribuut niet is dat een check of deze event is afgelopen ? 
       
-        public string Location { get; set; } // hier weer gezamelijk afspreken welk type kan ook int zijn
+        public string LocationEvent { get; set; } // hier weer gezamelijk afspreken welk type kan ook int zijn
         [DataType(DataType.Date)]
         public DateTime Reservation {get;set;}
 

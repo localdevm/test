@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace IceOnWheels
 {
@@ -32,6 +33,7 @@ namespace IceOnWheels
             services.AddDbContext<OrderContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            
             // Add framework services
 
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -40,6 +42,13 @@ namespace IceOnWheels
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+            // Register the Swagger generator, defining one or more Swagger documents
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+            });
+
 
             services.AddMvc();
         }
@@ -50,6 +59,15 @@ namespace IceOnWheels
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
 
 
             if (env.IsDevelopment())
@@ -77,7 +95,11 @@ namespace IceOnWheels
                     name: "spa-fallback",
                     defaults: new { controller = "Home", action = "Index" });
             });
+          
+
+            
             DbInitializer.Init(context);
+
         }
     }
 }

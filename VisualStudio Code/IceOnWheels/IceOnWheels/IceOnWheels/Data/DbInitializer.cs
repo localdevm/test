@@ -92,7 +92,7 @@ namespace IceOnWheels.Data
                 {
                     //EventID = 1,
                     DID = false,
-                    Location = "StrontAkker 22",
+                    LocationEvent = "StrontAkker 22",
                     Reservation = DateTime.Parse("2017-12-03")
 
                 });
