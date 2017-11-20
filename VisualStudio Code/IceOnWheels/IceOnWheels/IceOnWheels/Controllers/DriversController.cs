@@ -90,11 +90,12 @@ namespace IceOnWheels.Controllers
             {
                 return BadRequest(ModelState);
             }
+            
 
             _context.Drivers.Add(driver);
-            await _context.SaveChangesAsync();
+             var result = _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetDriver", new { id = driver.DriverID }, driver);
+            return Ok(result);
         }
 
         // DELETE: api/Drivers/5
@@ -122,5 +123,6 @@ namespace IceOnWheels.Controllers
         {
             return _context.Drivers.Any(e => e.DriverID == id);
         }
+
     }
 }
