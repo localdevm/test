@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 export class HttpreqService {
   constructor(private http: Http){}
   storeDrivers(Drivers:any[]){
-    return this.http.post('/api/Drivers/',Drivers);
+    return this.http.post('http://localhost:59302/api/drivers/',Drivers);
 
   }
 }
