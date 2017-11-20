@@ -13,7 +13,7 @@
     width: 60%;
     text-align: center;
     margin: 0 auto;
-    
+
 }
 
 .title{
@@ -33,7 +33,7 @@
 
 form{
     margin-top: 50px;
-    
+
 }
 
 .inputtext{
@@ -47,7 +47,7 @@ form{
     padding-left: 20px;
     font-size: 20px;
     opacity: 0.9;
-    
+
 }
 
 .inputtext:first-of-type{
@@ -63,7 +63,7 @@ form{
     background-color: #fff 3%;
 }
 
-.inputbutton{
+.btn-primary{
     display: block;
     -webkit-appearance: none;
     transition: 0.3s;

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, Output, ViewChild} from '@angular/core';
+
 
 
 @Component({
@@ -9,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class RequestComponent implements OnInit {
 
   constructor() { }
+
+
 
   ngOnInit() {
    /* this.http.get('api/Drivers').subscribe(data => {
