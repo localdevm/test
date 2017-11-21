@@ -42,7 +42,7 @@ export class RequestComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.http.get('api/Drivers').subscribe(data =>{
+    this.http.get('http://localhost:2166/api/drivers/ ').subscribe(data =>{
       this.Drivers = data['Drivers'];
     })
   }

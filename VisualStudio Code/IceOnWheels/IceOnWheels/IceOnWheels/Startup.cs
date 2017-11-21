@@ -49,6 +49,12 @@ namespace IceOnWheels
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
             });
 
+            services.AddCors(o => o.AddPolicy("Allow", builder =>
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
 
             services.AddMvc();
         }
@@ -81,9 +87,11 @@ namespace IceOnWheels
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+                
             }
 
             app.UseStaticFiles();
+            app.UseCors("Allow");
 
             app.UseMvc(routes =>
             {
