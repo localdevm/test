@@ -14,6 +14,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {HttpreqService} from './httpreq.service';
+import {HttpgetService} from './httpget.service';
 
 
 const routes: Routes = [

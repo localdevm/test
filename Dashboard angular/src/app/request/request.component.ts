@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpreqService } from '../httpreq.service';
+import {HttpgetService} from '../httpget.service'
 import {sendRequest} from "selenium-webdriver/http";
 import {HttpClient} from "@angular/common/http";
 
@@ -42,7 +43,7 @@ export class RequestComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.http.get('http://localhost:2166/api/drivers/ ').subscribe(data =>{
+    this.http.get('http://iceonwheels20171117020935.azurewebsites.net/api/drivers').subscribe(data =>{
       this.Drivers = data['Drivers'];
     })
   }
