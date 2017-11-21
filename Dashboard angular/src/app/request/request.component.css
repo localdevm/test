@@ -1,25 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC|Josefin+Slab:600');
 
-@media (min-width: 1200px)
-{
-    .wrapper{
-        height: 900px;
-    }
-}
 
-@media (min-width: 980px) and (max-width: 1199px)
-{
-    .wrapper{
-        height: 900px;
-    }
-}
-
-@media (max-width: 980px)
-{
-    .wrapper{
-        height: 768px;
-    }
-}
 
 .wrapper {
     background-size: 200% 100% !important;
@@ -27,12 +8,13 @@
     transform: translate3d(0,0,0);
     animation: move 10s ease infinite;
     box-sizing: border-box;
+    margin: 0 auto;
 }
 
 .insidewrap{
-    width: 60%;
-    text-align: center;
+    width: 70%;
     margin: 0 auto;
+    text-align: center;
 }
 
 .title{
@@ -48,17 +30,18 @@
 .iform{
     display: inline-block;
     text-align: center;
+    width: 60%;
  
 }
 
 form{
     margin-top: 50px;
-    width: 100%;
+    
 }
 
 .inputtext{
     display: block;
-    width: 50vh;
+    width: 100%;
     border: 0;
     outline: 0;
     -webkit-appearance: none;
