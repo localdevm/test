@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <None Remove="Properties\PublishProfiles\IceOnWheels20171117020935 - Web Deploy.pubxml" />
+    <None Remove="Properties\PublishProfiles\OnTimeAP - Web Deploy.pubxml" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,1 +1,19 @@
-<button (click)="onAddDriver()" id="savedrivers" class="btn btn-primary">Send request</button>
+<h1>{{ title }}</h1>
+
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav class="example-sidenav">
+    Jolly good!
+  </mat-sidenav>
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="sidenav.open()">
+      Open sidenav
+    </button>
+  </div>
+</mat-sidenav-container>
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+<agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng">
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+
+</agm-map>

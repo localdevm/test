@@ -1,0 +1,18 @@
+
+.h1{
+
+  text-align: center;
+}
+.title{
+  color: hotpink;
+  text-align: center;
+}
+
+
+agm-map{
+  position: absolute;
+  right: 100px;
+  height: 500px;
+  width:1000px;
+
+}

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BodyComponent } from './body.component';
+import {BodyComponent} from './body.component';
 
 describe('BodyComponent', () => {
   let component: BodyComponent;
@@ -23,3 +23,4 @@ describe('BodyComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
