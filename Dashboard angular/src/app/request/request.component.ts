@@ -32,14 +32,6 @@ export class RequestComponent implements OnInit{
       Phonenumber: phonenumber
     });
   }
-  /*  onSave()
-    {
-      this.httpreqservice.storeDrivers(this.Drivers)
-        .subscribe(
-          (response) => console.log(response),
-          (error) => console.log(error)
-        );
-    }*/
 
 
   ngOnInit(): void {

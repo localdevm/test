@@ -37,7 +37,7 @@ namespace IceOnWheels.Controllers
                 return BadRequest(ModelState);
             }
 
-            var location = await _context.Locations.SingleOrDefaultAsync(m => m.LocationID == id);
+            var location = await _context.Locations.SingleOrDefaultAsync(m => m.id == id);
 
             if (location == null)
             {
@@ -56,7 +56,7 @@ namespace IceOnWheels.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != location.LocationID)
+            if (id != location.id)
             {
                 return BadRequest();
             }
@@ -94,7 +94,7 @@ namespace IceOnWheels.Controllers
             _context.Locations.Add(location);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetLocation", new { id = location.LocationID }, location);
+            return CreatedAtAction("GetLocation", new { id = location.id }, location);
         }
 
         // DELETE: api/Locations/5
@@ -106,7 +106,7 @@ namespace IceOnWheels.Controllers
                 return BadRequest(ModelState);
             }
 
-            var location = await _context.Locations.SingleOrDefaultAsync(m => m.LocationID == id);
+            var location = await _context.Locations.SingleOrDefaultAsync(m => m.id == id);
             if (location == null)
             {
                 return NotFound();
@@ -120,7 +120,7 @@ namespace IceOnWheels.Controllers
 
         private bool LocationExists(int id)
         {
-            return _context.Locations.Any(e => e.LocationID == id);
+            return _context.Locations.Any(e => e.id == id);
         }
     }
 }

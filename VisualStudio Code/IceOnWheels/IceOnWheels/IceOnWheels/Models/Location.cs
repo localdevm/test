@@ -10,13 +10,14 @@ namespace IceOnWheels.Models
     {
   
      
-        public int LocationID { get; set; }
-        
-        public double Longtitude { get; set; }
-        public double Latitude { get; set; }
-        public string StraatNaam { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public double lng { get; set; }
+        public double Lat{ get; set; }
+        public string address { get; set; }
         [DataType(DataType.Date)]
         public DateTime Timestamp { get; set; }
+        public string type { get; set; }
 
     }
 }
