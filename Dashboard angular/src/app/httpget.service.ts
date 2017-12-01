@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 export class HttpgetService {
   constructor(private http: Http){}
   getDrivers(Drivers:any[]){
-    return this.http.get('http://localhost:59302/api/drivers/');
+    return this.http.get('http://iceonwheels20171117020935.azurewebsites.net/api/drivers/');
 
   }
 }
