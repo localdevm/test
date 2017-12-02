@@ -1,11 +1,14 @@
 
 .h1{
-
   text-align: center;
 }
 .title{
   color: hotpink;
   text-align: center;
+}
+.mat-sidenav-container{
+  width: 35%;
+  height: 50%;
 }
 
 

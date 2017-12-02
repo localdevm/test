@@ -10,4 +10,7 @@ export class HttpgetService {
     return this.http.get('http://iceonwheels20171117020935.azurewebsites.net/api/drivers/');
 
   }
+  getAdressLocation(Location:any[]){
+    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=51.2228618,4.3161537999999995&location_type=ROOFTOP&result_type=street_address&key=AIzaSyAoUXMzvXuuxkZO4JimW1esV6HWvNqdmo0<')
+  }
 }

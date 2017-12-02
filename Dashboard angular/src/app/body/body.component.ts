@@ -15,6 +15,8 @@ export class BodyComponent implements OnInit {
   title: string = 'IceOnWheels map';
   lat:number;
   lng:number;
+  latmarker1:number;
+  lngmarker1:number;
   zoom: number = 14;
 
   constructor() {
@@ -51,6 +53,12 @@ export class BodyComponent implements OnInit {
           console.log(position),
             this.lat = position.coords.latitude,
             this.lng = position.coords.longitude
+            this.latmarker1 = this.lat + 0.005;
+            this.lngmarker1 = this.lng + 0.012;
+
+
+
+
 
           error => {
             switch (error.code) {

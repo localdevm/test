@@ -20,6 +20,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatButtonModule} from '@angular/material/button';
+import {HttpModule} from "@angular/http";
 
 
 
@@ -54,6 +55,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpModule,
     CommonModule,
     FormsModule,
     MatToolbarModule,
