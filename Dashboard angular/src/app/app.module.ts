@@ -20,6 +20,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatButtonModule} from '@angular/material/button';
+import { HttpModule } from '@angular/http';
+import { JsonPipe } from '@angular/common';
 
 
 
@@ -55,6 +57,7 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     CommonModule,
+    HttpModule,
     FormsModule,
     MatToolbarModule,
     MatSidenavModule,
@@ -65,7 +68,7 @@ const routes: Routes = [
       apiKey: 'AIzaSyAoUXMzvXuuxkZO4JimW1esV6HWvNqdmo0'
     })
   ],
-  providers: [HttpreqService],
+  providers: [HttpreqService, HttpgetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

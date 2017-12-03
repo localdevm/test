@@ -5,6 +5,7 @@ import {sendRequest} from "selenium-webdriver/http";
 import {HttpClient} from "@angular/common/http";
 
 
+
 @Component({
   selector: 'app-request',
   templateUrl: './request.component.html',
@@ -15,12 +16,17 @@ export class RequestComponent implements OnInit{
   Gegevens
 
   constructor(public getdata : HttpgetService){
-    this.Gegevens = getdata.getDrivers();
+    //this.Gegevens = getdata.getDrivers();
+    this.getdata.getDrivers().subscribe(data => {
+      this.Gegevens = data;
+    });
+    
   }
+
   Drivers= [
     {
       Name: 'joske',
-      Adress: 'Bloemenlaan 12',
+      Adress: 'Bloemenlaan 15',
       Availibility: true,
       Phonenumber: '0473586758'
 
