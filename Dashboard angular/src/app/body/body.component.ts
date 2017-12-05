@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AgmCoreModule } from '@agm/core';
-
+import { GoogleMapsAPIWrapper } from '@agm/core';
+declare var google: any;
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
   styleUrls: ['./body.component.css'],
 
 })
-
 export class BodyComponent implements OnInit {
   //var navigator.geolocation;
   geolocationPosition;
@@ -18,7 +18,8 @@ export class BodyComponent implements OnInit {
   latmarker1:number;
   lngmarker1:number;
   zoom: number = 14;
-
+  center;
+  geocoder;
   constructor() {
   }
 
@@ -44,9 +45,10 @@ export class BodyComponent implements OnInit {
   ]
 */
 
+
   ngOnInit() {
     if (window.navigator && window.navigator.geolocation) {
-
+     // this.geocoder = new google.maps.Geocoder();
       window.navigator.geolocation.getCurrentPosition(
         position => {
           this.geolocationPosition = position,
@@ -55,10 +57,8 @@ export class BodyComponent implements OnInit {
             this.lng = position.coords.longitude
             this.latmarker1 = this.lat + 0.005;
             this.lngmarker1 = this.lng + 0.012;
-
-
-
-
+            this.center.lng = this.lng;
+            this.center.lat = this.lat;
 
           error => {
             switch (error.code) {
