@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ApplicationRef} from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
-import { AgmCoreModule } from '@agm/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BodyComponent } from './body/body.component';
@@ -20,12 +19,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatButtonModule} from '@angular/material/button';
-<<<<<<< HEAD
-import {HttpModule} from "@angular/http";
-=======
 import { HttpModule } from '@angular/http';
 import { JsonPipe } from '@angular/common';
->>>>>>> aa077df8ac18d64769f35255092e2b36bb573c0d
+import {AgmCoreModule} from "@agm/core";
+
 
 
 
