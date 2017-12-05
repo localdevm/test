@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AgmCoreModule } from '@agm/core';
-import { GoogleMapsAPIWrapper } from '@agm/core';
-declare var google: any;
+import {GeocodingApiService } from '../reversegeocoding.service'
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
@@ -9,7 +7,7 @@ declare var google: any;
 
 })
 export class BodyComponent implements OnInit {
-  //var navigator.geolocation;
+
   geolocationPosition;
 
   title: string = 'IceOnWheels map';
@@ -19,9 +17,15 @@ export class BodyComponent implements OnInit {
   lngmarker1:number;
   zoom: number = 14;
   center;
+  address = 'waterstraat 66';
+  postalCode;
   geocoder;
-  constructor() {
+  selectedPlace;
+
+  constructor(private GeocodingApiService : GeocodingApiService ){
+
   }
+
 
   /*markers: marker[] = [
     {
@@ -45,10 +49,8 @@ export class BodyComponent implements OnInit {
   ]
 */
 
-
   ngOnInit() {
     if (window.navigator && window.navigator.geolocation) {
-     // this.geocoder = new google.maps.Geocoder();
       window.navigator.geolocation.getCurrentPosition(
         position => {
           this.geolocationPosition = position,
@@ -59,6 +61,7 @@ export class BodyComponent implements OnInit {
             this.lngmarker1 = this.lng + 0.012;
             this.center.lng = this.lng;
             this.center.lat = this.lat;
+
 
           error => {
             switch (error.code) {
@@ -76,4 +79,13 @@ export class BodyComponent implements OnInit {
         })
     };
   }
+
+  getlocation() {
+    console.log("getting location")
+    this.GeocodingApiService
+      .findFromCoordinates(this.lat, this.lng).subscribe(res => console.log(res),
+      error => {console.log("something went wrong")});
+
+  }
+
 }
