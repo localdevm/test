@@ -19,17 +19,14 @@ import {CommonModule} from "@angular/common";
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-<<<<<<< HEAD
 import {MatButtonModule} from '@angular/material/button';
 import { HttpModule } from '@angular/http';
 import { JsonPipe } from '@angular/common';
 import {AgmCoreModule} from "@agm/core";
-=======
-import {MatButtonModule} from '@angular/material/button'
-import {HttpModule} from "@angular/http";
 
 
->>>>>>> 205756c65829292d773ebfaf40a5578451e08688
+
+
 
 
 

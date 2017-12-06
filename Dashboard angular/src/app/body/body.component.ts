@@ -26,12 +26,7 @@ export class BodyComponent implements OnInit {
 
   }
 
-<<<<<<< HEAD
   markers = [
-=======
-
-  /*markers: marker[] = [
->>>>>>> 205756c65829292d773ebfaf40a5578451e08688
     {
       lat: 51.673858,
       lng: 7.815982
@@ -78,16 +73,13 @@ export class BodyComponent implements OnInit {
           this.geolocationPosition = position,
           console.log(position),
             this.lat = position.coords.latitude,
-<<<<<<< HEAD
             this.lng = position.coords.longitude         
-=======
             this.lng = position.coords.longitude
             this.latmarker1 = this.lat + 0.005;
             this.lngmarker1 = this.lng + 0.012;
             this.center.lng = this.lng;
             this.center.lat = this.lat;
 
->>>>>>> 205756c65829292d773ebfaf40a5578451e08688
 
           error => {
             switch (error.code) {
