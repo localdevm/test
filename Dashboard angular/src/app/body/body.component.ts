@@ -25,38 +25,52 @@ export class BodyComponent implements OnInit {
   markers = [
     {
       lat: 51.673858,
-      lng: 7.815982,
-      label: 'A',
-      draggable: true
+      lng: 7.815982
     },
     {
       lat: 51.373858,
-      lng: 7.215982,
-      label: 'B',
-      draggable: false
+      lng: 7.215982
     },
     {
       lat: 51.723858,
-      lng: 7.895982,
-      label: 'C',
-      draggable: true
+      lng: 7.895982
+    },
+    {
+      lat: 50.910667,
+      lng: 4.435452
+      //François
+    },
+    {
+      lat: 51.180322,
+      lng: 4.908298
+      //Seppe
+    },
+    {
+      lat: 51.230130,
+      lng: 4.416172
+      //AP
+    },
+    {
+      lat: 51.199588,
+      lng: 4.475172
+      //Maarten
     }
   ]
 
 
   ngOnInit() {
+
+   
+
+
     if (window.navigator && window.navigator.geolocation) {
 
       window.navigator.geolocation.getCurrentPosition(
         position => {
           this.geolocationPosition = position,
           console.log(position),
-           // this.lat = position.coords.latitude,
-            //this.lng = position.coords.longitude
-            //this.latmarker1 = this.lat + 0.005;
-            //this.lngmarker1 = this.lng + 0.012;
-            
-
+            this.lat = position.coords.latitude,
+            this.lng = position.coords.longitude         
 
           error => {
             switch (error.code) {
