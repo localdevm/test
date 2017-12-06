@@ -9,7 +9,7 @@ export class HttpgetService {
   constructor(private http: HttpClient){}
 
   public getDrivers(){
-    return this.http.get('http://iceonwheels20171117020935.azurewebsites.net/api/drivers');
-    //return this.http.get("https://jsonplaceholder.typicode.com/posts");
+    {return this.http.get('http://iceonwheels20171117020935.azurewebsites.net/api/drivers');
   }
+}
 }

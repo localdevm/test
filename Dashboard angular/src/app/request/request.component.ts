@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpreqService } from '../httpreq.service';
-import {HttpgetService} from '../httpget.service'
+import {HttpgetService} from '../httpget.service';
 import {sendRequest} from "selenium-webdriver/http";
 import {HttpClient} from "@angular/common/http";
 
