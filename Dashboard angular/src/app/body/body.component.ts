@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {GeocodingApiService } from '../reversegeocoding.service'
-import {XmlrequestService} from "../xmlrequest.service"
+import {GeocodingApiService } from '../reversegeocoding.service';
 import {HttpClient} from "@angular/common/http";
 
 
@@ -111,21 +110,13 @@ export class BodyComponent implements OnInit {
   }
 
   getlocation() {
-    //console.log("getting location")
-    //this.GeocodingApiService
-      //.findFromCoordinates(this.lat, this.lng).subscribe(res => this.currentLocation = res,
-      //.findFromCoordinates(this.lat, this.lng).subscribe(res => console.log(res),
-      //error => {console.log("something went wrong")});
-      //console.log("Locatie werd opgevraagd!" + this.currentLocation);
-
-
-  this.http.get("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAoUXMzvXuuxkZO4JimW1esV6HWvNqdmo0&latlng=" 
-    + this.lat.toString() + "," + this.lng.toString()).subscribe(data => {
+    this.http.get("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAoUXMzvXuuxkZO4JimW1esV6HWvNqdmo0&latlng=" 
+      + this.lat.toString() + "," + this.lng.toString()).subscribe(data => {
       this.currentLocation = data;
-      this.streetName = this.currentLocation.results[0]['address_components'][1]['long_name']
-      this.number = this.currentLocation.results[0]['address_components'][0]['long_name']
-      this.postalCode = this.currentLocation.results[0]['address_components'][6]['short_name']
-      this.city = this.currentLocation.results[0]['address_components'][2]['long_name']
+      this.streetName = this.currentLocation.results[0]['address_components'][1]['long_name'];
+      this.number = this.currentLocation.results[0]['address_components'][0]['long_name'];
+      this.postalCode = this.currentLocation.results[0]['address_components'][6]['short_name'];
+      this.city = this.currentLocation.results[0]['address_components'][2]['long_name'];
       });
 
   }

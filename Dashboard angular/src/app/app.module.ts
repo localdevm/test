@@ -13,7 +13,6 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {HttpreqService} from './httpreq.service';
 import {HttpgetService} from './httpget.service';
-import {XmlrequestService} from './xmlrequest.service';
 import {GeocodingApiService } from './reversegeocoding.service';
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
