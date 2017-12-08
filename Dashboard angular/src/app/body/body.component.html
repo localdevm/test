@@ -1,6 +1,5 @@
 <h1>{{ title }}</h1>
-<h3>{{streetName}} {{number }}</h3>
-<h3>{{postalCode}} {{city}}</h3>
+<h3>{{completeAdress}}</h3>
 
 
 <mat-sidenav-container class="example-container">
@@ -19,7 +18,7 @@
 
 <agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng">
   <div *ngFor="let marker of markers" class='agm-info-window-content'>
-      <agm-marker [latitude]="marker.lat" [longitude]="marker.lng" [label]="marker.label" iconUrl="./assets/IceCreamCone_nobackground.png"></agm-marker >
+        <agm-marker [latitude]="marker.lat" [longitude]="marker.lng" [title]= "test" [label]="marker.label" iconUrl="./assets/IceCreamCone_nobackground.png"></agm-marker >
          <ng-content></ng-content>
         
   </div>

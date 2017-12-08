@@ -29,6 +29,7 @@ export class BodyComponent implements OnInit {
   geocoder;
   selectedPlace;
   currentLocation;
+  completeAdress;
 
   constructor(private GeocodingApiService : GeocodingApiService, private http : HttpClient ){
 
@@ -86,8 +87,8 @@ export class BodyComponent implements OnInit {
             this.lat = position.coords.latitude,
             this.lng = position.coords.longitude         
             this.lng = position.coords.longitude
-            this.latmarker1 = this.lat + 0.005;
-            this.lngmarker1 = this.lng + 0.012;
+            //this.latmarker1 = this.lat + 0.005;
+            //this.lngmarker1 = this.lng + 0.012;
             this.center.lng = this.lng;
             this.center.lat = this.lat;
 
@@ -117,6 +118,8 @@ export class BodyComponent implements OnInit {
       this.number = this.currentLocation.results[0]['address_components'][0]['long_name'];
       this.postalCode = this.currentLocation.results[0]['address_components'][6]['short_name'];
       this.city = this.currentLocation.results[0]['address_components'][2]['long_name'];
+      this.completeAdress = this.currentLocation.results[0]['formatted_address'];
+      console.log(data);
       });
 
   }
