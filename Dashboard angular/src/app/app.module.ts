@@ -23,7 +23,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { HttpModule } from '@angular/http';
 import { JsonPipe } from '@angular/common';
 import {AgmCoreModule} from "@agm/core";
-
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -64,6 +64,7 @@ const routes: Routes = [
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
+    MatTableModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     AgmCoreModule.forRoot({

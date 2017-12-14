@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import {GeocodingApiService } from '../reversegeocoding.service';
 import {HttpClient} from "@angular/common/http";
-
+import {MatTableDataSource, MatSort} from '@angular/material';
 
 
 @Component({
@@ -10,8 +10,8 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./body.component.css'],
 
 })
-export class BodyComponent implements OnInit {
 
+export class BodyComponent implements OnInit {
   geolocationPosition;
 
   title: string = 'IceOnWheels map';
@@ -34,7 +34,7 @@ export class BodyComponent implements OnInit {
   constructor(private GeocodingApiService : GeocodingApiService, private http : HttpClient ){
 
   }
-  
+
   markers = [
     {
       lat: 51.673858,
@@ -73,25 +73,35 @@ export class BodyComponent implements OnInit {
     }
   ]
 
+  getlocation() {
+    this.http.get("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAoUXMzvXuuxkZO4JimW1esV6HWvNqdmo0&latlng="
+      + this.lat.toString() + "," + this.lng.toString()).subscribe(data => {
+      this.currentLocation = data;
+      this.streetName = this.currentLocation.results[0]['address_components'][1]['long_name'];
+      this.number = this.currentLocation.results[0]['address_components'][0]['long_name'];
+      this.postalCode = this.currentLocation.results[0]['address_components'][6]['short_name'];
+      this.city = this.currentLocation.results[0]['address_components'][2]['long_name'];
+      this.completeAdress = this.currentLocation.results[0]['formatted_address'];
+      console.log(data);
+      console.log("succes");
+    });
+
+  }
 
   ngOnInit() {
-
-   
-
-
     if (window.navigator && window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(
         position => {
           this.geolocationPosition = position,
           console.log(position),
             this.lat = position.coords.latitude,
-            this.lng = position.coords.longitude         
             this.lng = position.coords.longitude
+            //this.lng = position.coords.longitude
             //this.latmarker1 = this.lat + 0.005;
             //this.lngmarker1 = this.lng + 0.012;
             this.center.lng = this.lng;
             this.center.lat = this.lat;
-
+          new TableSortingExample();
 
           error => {
             switch (error.code) {
@@ -107,21 +117,36 @@ export class BodyComponent implements OnInit {
             }
           }
         })
+      this.getlocation();
     };
   }
 
-  getlocation() {
-    this.http.get("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAoUXMzvXuuxkZO4JimW1esV6HWvNqdmo0&latlng=" 
-      + this.lat.toString() + "," + this.lng.toString()).subscribe(data => {
-      this.currentLocation = data;
-      this.streetName = this.currentLocation.results[0]['address_components'][1]['long_name'];
-      this.number = this.currentLocation.results[0]['address_components'][0]['long_name'];
-      this.postalCode = this.currentLocation.results[0]['address_components'][6]['short_name'];
-      this.city = this.currentLocation.results[0]['address_components'][2]['long_name'];
-      this.completeAdress = this.currentLocation.results[0]['formatted_address'];
-      console.log(data);
-      });
-
-  }
-
 }
+export class TableSortingExample {
+  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+  @ViewChild(MatSort) sort: MatSort;
+
+  /**
+   * Set the sort after the view init since this component will
+   * be able to query its view for the initialized sort.
+   **/
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+  }
+}
+
+export interface Element {
+  name: string;
+  locatie: string;
+  afstand: number;
+}
+
+const ELEMENT_DATA: Element[] = [
+  {name: "joske", locatie: 'strontakker', afstand: 500},
+
+];
+
+
+

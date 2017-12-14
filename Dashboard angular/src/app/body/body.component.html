@@ -1,26 +1,43 @@
 <h1>{{ title }}</h1>
 <h3>{{completeAdress}}</h3>
 
-
-<mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav class="example-sidenav">
-    Jolly good!
-  </mat-sidenav>
-  <div class="example-sidenav-content">
-    <button type="button" mat-button (click)="sidenav.open()">
-      Open sidenav
-    </button>
-  </div>
-</mat-sidenav-container>
+<button (click)="getlocation()"> get address</button>
 
 <br>
-<button (click)="getlocation()"> get address</button>
+
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="locatie">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.locatie}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="afstand">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Weight </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.afstand}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+
 
 <agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng">
   <div *ngFor="let marker of markers" class='agm-info-window-content'>
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
         <agm-marker [latitude]="marker.lat" [longitude]="marker.lng" [title]= "test" [label]="marker.label" iconUrl="./assets/IceCreamCone_nobackground.png"></agm-marker >
          <ng-content></ng-content>
-        
+
   </div>
 </agm-map>
 
