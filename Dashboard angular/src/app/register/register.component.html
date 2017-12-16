@@ -1,3 +1,34 @@
-<p>
-  register works!
-</p>
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <form (ngSubmit)="onSignup(f)" #f="ngForm">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" ngModel class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="adress">adress</label>
+        <input type="adress" id="adress" name="adress" ngModel class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="Phonenumber">Phone number</label>
+        <input type="Phonenumber" id="Phonenumber" name="Phonenumber" ngModel class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" ngModel class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="confirmpassword">Confirm Password</label>
+        <input  type="password" id="confirmpassword" name="confirmpassword" ngModel class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="rad1">Driver</label>
+      <input class="form-check-input" id="rad1" type="radio" name="usermode1" value="false" ngModel>
+        <label for="rad2">Customer</label>
+      <input class="form-check-input" id="rad2" type="radio" name="usermode2" value="false" ngModel>
+      </div>
+      <button class="btn btn-primary" type="submit">Sign Up</button>
+    </form>
+
+  </div>
+</div>

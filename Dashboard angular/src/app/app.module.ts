@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {HttpreqService} from './httpreq.service';
+import {AuthService} from "./auth.service";
 import {HttpgetService} from './httpget.service';
 import {GeocodingApiService } from './reversegeocoding.service';
 import {FormsModule} from "@angular/forms";
@@ -24,6 +25,7 @@ import { HttpModule } from '@angular/http';
 import { JsonPipe } from '@angular/common';
 import {AgmCoreModule} from "@agm/core";
 import {MatTableModule} from '@angular/material/table';
+import {LoginComponent} from "./login/login.component";
 
 
 
@@ -37,6 +39,12 @@ const routes: Routes = [
  {
   path: 'dashboard', component: BodyComponent
  },
+  {
+    path: 'register', component:RegisterComponent
+  },
+  {
+    path: 'login', component:LoginComponent
+  },
  {
    path: '**', component: NotFoundComponent
  }
@@ -52,7 +60,8 @@ const routes: Routes = [
     BannerComponent,
     RegisterComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +80,7 @@ const routes: Routes = [
       apiKey: 'AIzaSyAoUXMzvXuuxkZO4JimW1esV6HWvNqdmo0'
     })
   ],
-  providers: [HttpreqService, HttpgetService,GeocodingApiService],
+  providers: [HttpreqService, HttpgetService,GeocodingApiService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
