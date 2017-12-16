@@ -11,7 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private authService : AuthService , private validator : Validators) { }
+  constructor(private authService : AuthService ) { }
 
   ngOnInit() {
   }
