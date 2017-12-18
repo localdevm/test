@@ -1,1 +1,23 @@
 <!--The HTML code is in the Typsecript file login.component.ts-->
+<div class="wrapper">
+  <div class="insidewrap">
+    <div class="titlediv">
+      <h1 class="title">Login</h1>
+    </div>
+    <div class="iform">
+      <form (ngSubmit)="onSignin(f)" #f="ngForm">
+        <div class="form-group">
+          <input id="email" type="email" class="inputtext" name="email" placeholder="Email" ngModel/>
+        </div>
+        <div class="form-group">
+          <input id="password" type="password" class="inputtext" name="password" placeholder="Password" ngModel/>
+
+        </div>
+        <div class="form-group">
+        <button type="submit" id="SendRequest" class="btn btn-primary" >Login</button>
+        </div>
+        <br>
+      </form>
+    </div>
+  </div>
+</div>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient,HttpHeaders} from "@angular/common/http";
 import {Router} from '@angular/router';
 import { HttpParams } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
@@ -27,23 +28,31 @@ export class AuthService {
     }
   }
 
-  signupUser(email: string, password:string,adress:string,Phonenumber:any){
-    this.http.post('http://iceonwheels20171117020935.azurewebsites.net/api/Drivers',{
+  public signupUser(email: string, password:string,adress:string,Phonenumber:any){
+   return this.http.post('http://iceonwheels20171117020935.azurewebsites.net/api/Drivers',{
       email: email,
       pasword:password,
       adress:adress,
       Phonenumber:Phonenumber,
+    })
+      
+  }
+
+  public signinUser(email:string, password:string){
+
+    return this.http.post("http://iceonwheels20171117020935.azurewebsites.net/connect/token", {
+      email: email,
+      password:password
     })
       .subscribe(
         res => {
           console.log(res);
         },
         error => {
-          console.log("Error occured");
+          console.log(error);
         }
       );
   }
-
   public isTokenExpired(){
     if(this.token){
       var now = new Date();
