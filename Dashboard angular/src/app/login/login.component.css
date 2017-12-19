@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Josefin+Slab:600');
+
+
+
+.wrapper {
+  background-size: 200% 100% !important;
+  background: linear-gradient(45deg, #A5FFD6 10%, #D7F171 90%);
+  transform: translate3d(0,0,0);
+  animation: move 10s ease infinite;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.insidewrap{
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title{
+  margin-top: 0;
+  padding-top: 50px;
+  color: #333333;
+  font-size: 68px;
+  text-transform: uppercase;
+  font-family: 'Josefin Slab', serif;
+  font-weight: bold;
+}
+
+.iform{
+  display: inline-block;
+  text-align: center;
+  width: 60%;
+
+}
+
+form{
+  margin-top: 50px;
+
+}
+
+.inputtext{
+  display: block;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  font-family: "Roboto";
+  height: 80px;
+  padding-left: 20px;
+  font-size: 20px;
+  opacity: 0.9;
+
+}
+
+.inputtext:first-of-type{
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.inputfirst{
+  margin-top: 100px;
+}
+
+.inputtext :focus{
+  background-color: #fff 3%;
+}
+
+.btn-primary{
+  display: block;
+  -webkit-appearance: none;
+  transition: 0.3s;
+  border: 0;
+  outline: 0;
+  width: 100%;
+  height: 60px;
+  border: none;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.inputbutton:hover {
+  background: #3a3939;
+  color: white;
+  transition: 1s;
+}
