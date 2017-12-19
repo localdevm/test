@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
     this.authService.signupUser(email,password,adress,phonenumber).subscribe(data =>{
       if(data){
         this.authService.setToken(data);
-        console.log(data)
+        console.log(data);
 
       }
       error => {console.log(error)}

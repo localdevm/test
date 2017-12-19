@@ -2,6 +2,7 @@ import { Component, OnInit,ViewChild } from '@angular/core';
 import {GeocodingApiService } from '../reversegeocoding.service';
 import {HttpClient} from "@angular/common/http";
 import {MatTableDataSource, MatSort} from '@angular/material';
+import {HttpgetService} from "../httpget.service";
 
 
 @Component({
@@ -31,8 +32,14 @@ export class BodyComponent implements OnInit {
   currentLocation;
   completeAdress;
 
-  constructor(private GeocodingApiService : GeocodingApiService, private http : HttpClient ){
+  Gegevens
 
+  constructor(private GeocodingApiService : GeocodingApiService, private http : HttpClient, getdata : HttpgetService) {
+    //this.Gegevens = getdata.getDrivers();
+    this.getdata.getDrivers().subscribe(data => {
+      this.Gegevens = data;
+      dataSource = new MatTableDataSource(ELEMENT_DATA);
+    });
   }
 
   markers = [
@@ -124,7 +131,7 @@ export class BodyComponent implements OnInit {
 }
 export class TableSortingExample {
   displayedColumns = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+
 
   @ViewChild(MatSort) sort: MatSort;
 
