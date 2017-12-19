@@ -1,7 +1,9 @@
 <h1>{{ title }}</h1>
 <h3>{{completeAdress}}</h3>
+<h3>{{calculatedDistance}}</h3>
 
 <button (click)="getlocation()"> get address</button>
+<button (click)="calculateradius()"> Show drivers < 5km</button>
 
 <br>
 
@@ -33,7 +35,7 @@
 
 
 <agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng">
-  <div *ngFor="let marker of markers" class='agm-info-window-content'>
+  <div *ngFor="let marker of markersinrange" class='agm-info-window-content'>
         <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
         <agm-marker [latitude]="marker.lat" [longitude]="marker.lng" [title]= "test" [label]="marker.label" iconUrl="./assets/IceCreamCone_nobackground.png"></agm-marker >
          <ng-content></ng-content>

@@ -13,7 +13,6 @@ import {MatTableDataSource, MatSort} from '@angular/material';
 
 export class BodyComponent implements OnInit {
   geolocationPosition;
-
   title: string = 'IceOnWheels map';
   lat:number;
   lng:number;
@@ -30,8 +29,11 @@ export class BodyComponent implements OnInit {
   selectedPlace;
   currentLocation;
   completeAdress;
+  calculatedTrip;
+  calculatedDistance;
+  markersinrange = [];
 
-  constructor(private GeocodingApiService : GeocodingApiService, private http : HttpClient ){
+  constructor(private GeocodingApiService : GeocodingApiService, private http : HttpClient, private client : HttpClient ){
 
   }
 
@@ -73,22 +75,42 @@ export class BodyComponent implements OnInit {
     }
   ]
 
-  getlocation() {
+  
+
+ getlocation() {
     this.http.get("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAoUXMzvXuuxkZO4JimW1esV6HWvNqdmo0&latlng="
       + this.lat.toString() + "," + this.lng.toString()).subscribe(data => {
       this.currentLocation = data;
-      this.streetName = this.currentLocation.results[0]['address_components'][1]['long_name'];
       this.number = this.currentLocation.results[0]['address_components'][0]['long_name'];
       this.postalCode = this.currentLocation.results[0]['address_components'][6]['short_name'];
       this.city = this.currentLocation.results[0]['address_components'][2]['long_name'];
+      this.streetName = this.currentLocation.results[0]['address_components'][1]['long_name'];
       this.completeAdress = this.currentLocation.results[0]['formatted_address'];
-      console.log(data);
-      console.log("succes");
+      //console.log(data);
+      //console.log("succes");
     });
+  }
+
+  calculateradius() { 
+    for (let i = 0; i < this.markers.length; i++){
+      this.client.get("https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=" 
+      + this.completeAdress.toString() +"&destinations=" + this.markers[i].lat.toString() + "," + this.markers[i].lng.toString() 
+      +"&key=AIzaSyAoUXMzvXuuxkZO4JimW1esV6HWvNqdmo0").subscribe(data => {
+        this.calculatedTrip = data;
+        this.calculatedDistance = data['rows'][0]['elements'][0]['distance']['value'];
+          if (this.calculatedDistance < 5000){
+            this.markersinrange.push({"lat": this.markers[i].lat, "lng": this.markers[i].lng, "label": this.markers[i].label, "locationtolodestination": this.calculatedDistance});
+          } 
+    });
+    } 
+}
+
+  driversinradius(){
 
   }
 
-  ngOnInit() {
+
+  ngOnInit() {    
     if (window.navigator && window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(
         position => {
@@ -117,10 +139,8 @@ export class BodyComponent implements OnInit {
             }
           }
         })
-      this.getlocation();
     };
   }
-
 }
 export class TableSortingExample {
   displayedColumns = ['position', 'name', 'weight', 'symbol'];
