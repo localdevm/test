@@ -33,12 +33,13 @@ export class BodyComponent implements OnInit {
   completeAdress;
 
   Gegevens
-
-  constructor(private GeocodingApiService : GeocodingApiService, private http : HttpClient, getdata : HttpgetService) {
+  dataSource;
+  getdata : HttpgetService)
+  constructor(private GeocodingApiService : GeocodingApiService, private http : HttpClient, ) {
     //this.Gegevens = getdata.getDrivers();
     this.getdata.getDrivers().subscribe(data => {
       this.Gegevens = data;
-      dataSource = new MatTableDataSource(ELEMENT_DATA);
+      this.dataSource = new MatTableDataSource(ELEMENT_DATA);
     });
   }
 
