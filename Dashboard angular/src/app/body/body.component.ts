@@ -32,15 +32,17 @@ export class BodyComponent implements OnInit {
   currentLocation;
   completeAdress;
 
-  Gegevens
+  Gegevens;
   dataSource;
-  getdata : HttpgetService)
-  constructor(private GeocodingApiService : GeocodingApiService, private http : HttpClient, ) {
-    //this.Gegevens = getdata.getDrivers();
-    this.getdata.getDrivers().subscribe(data => {
+  getdata : HttpgetService;
+
+  constructor(public GeocodingApiService : GeocodingApiService, public http : HttpClient) {
+   /*this.getdata.getDrivers().subscribe( data => {
       this.Gegevens = data;
-      this.dataSource = new MatTableDataSource(ELEMENT_DATA);
-    });
+      console.log(data);
+      this.dataSource = new MatTableDataSource(this.Gegevens);
+    },
+     error => {console.log(error)});*/
   }
 
   markers = [
@@ -133,7 +135,7 @@ export class BodyComponent implements OnInit {
 export class TableSortingExample {
   displayedColumns = ['position', 'name', 'weight', 'symbol'];
 
-
+  dataSource;
   @ViewChild(MatSort) sort: MatSort;
 
   /**
@@ -145,16 +147,6 @@ export class TableSortingExample {
   }
 }
 
-export interface Element {
-  name: string;
-  locatie: string;
-  afstand: number;
-}
-
-const ELEMENT_DATA: Element[] = [
-  {name: "joske", locatie: 'strontakker', afstand: 500},
-
-];
 
 
 
