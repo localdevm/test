@@ -28,14 +28,15 @@ export class AuthService {
     }
   }
 
-  public signupUser(email: string, password:string,adress:string,Phonenumber:any){
+  public signupUser(email: string, password:string,adress:string,name:string,Phonenumber:any){
    return this.http.post('http://iceonwheels20171117020935.azurewebsites.net/api/Drivers',{
       email: email,
+      name: name,
       pasword:password,
       adress:adress,
       Phonenumber:Phonenumber,
     })
-      
+
   }
 
   public signinUser(email:string, password:string){

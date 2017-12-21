@@ -7,32 +7,29 @@
 
 <br>
 
-<div class="example-container mat-elevation-z8">
-  <mat-table #table [dataSource]="dataSource" matSort>
+<mat-table #table [dataSource]="dataSource" class="filtert">
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+  <!-- Position Column -->
+  <div>
+    <ng-container matColumnDef="DriverID">
+      <mat-header-cell *matHeaderCellDef> DriverID </mat-header-cell>
+      <mat-cell *matCellDef="let Driver" #DriverID > {{Driver.driverID}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let Driver" #Name > {{Driver.name}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Availibility">
+      <mat-header-cell *matHeaderCellDef> Availibility </mat-header-cell>
+      <mat-cell *matCellDef="let Driver" #Availibility >{{Driver.availibility}}  </mat-cell>
     </ng-container>
 
     <!-- Name Column -->
-    <ng-container matColumnDef="locatie">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.locatie}} </mat-cell>
-    </ng-container>
-
-    <!-- Weight Column -->
-    <ng-container matColumnDef="afstand">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Weight </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.afstand}} </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
-</div>
-
+  </div>
+  <!-- Name Column -->
+  <mat-header-row *matHeaderRowDef="displayedColumns" ></mat-header-row>
+  <mat-row  *matRowDef="let data; columns: displayedColumns;"  >{{this.data}}</mat-row>
+</mat-table>
 
 <agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng">
   <div *ngFor="let marker of markersinrange" class='agm-info-window-content'>

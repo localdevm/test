@@ -15,11 +15,11 @@ import {HttpgetService} from "../httpget.service";
 export class BodyComponent implements OnInit {
   geolocationPosition;
   title: string = 'IceOnWheels map';
-  lat:number;
-  lng:number;
-  latmarker1:number;
-  lngmarker1:number;
-  label:string;
+  lat: number;
+  lng: number;
+  latmarker1: number;
+  lngmarker1: number;
+  label: string;
   zoom: number = 14;
   center;
   streetName;
@@ -35,22 +35,31 @@ export class BodyComponent implements OnInit {
   markersinrange = [];
 
 
-  constructor(private GeocodingApiService : GeocodingApiService, private http : HttpClient, private client : HttpClient ){
-
   Gegevens;
   dataSource;
-  getdata : HttpgetService;
 
 
-  constructor(public GeocodingApiService : GeocodingApiService, public http : HttpClient) {
-   this.getdata.getDrivers().subscribe( data => {
-      this.Gegevens = data;
-      console.log(data);
-      this.dataSource = new MatTableDataSource(this.Gegevens);
-    },
-     error => {console.log(error)});
+
+ constructor(public GeocodingApiService: GeocodingApiService, public http: HttpClient, public getdata: HttpgetService) {
+   getdata.getDrivers().subscribe(data => {
+     this.Gegevens = data;
+     this.dataSource = new MatTableDataSource(this.Gegevens);
+     console.log(this.Gegevens);
+   });
   }
 
+
+  displayedColumns = ['DriverID', 'Name','Availibility'];
+
+  @ViewChild(MatSort) sort: MatSort;
+
+  /**
+   * Set the sort after the view init since this component will
+   * be able to query its view for the initialized sort.
+   **/
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+  }
   markers = [
     {
       lat: 51.673858,
@@ -89,9 +98,8 @@ export class BodyComponent implements OnInit {
     }
   ]
 
-  
 
- getlocation() {
+  getlocation() {
     this.http.get("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAoUXMzvXuuxkZO4JimW1esV6HWvNqdmo0&latlng="
       + this.lat.toString() + "," + this.lng.toString()).subscribe(data => {
       this.currentLocation = data;
@@ -105,39 +113,44 @@ export class BodyComponent implements OnInit {
     });
   }
 
-  calculateradius() { 
-    for (let i = 0; i < this.markers.length; i++){
-      this.client.get("https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=" 
-      + this.completeAdress.toString() +"&destinations=" + this.markers[i].lat.toString() + "," + this.markers[i].lng.toString() 
-      +"&key=AIzaSyAoUXMzvXuuxkZO4JimW1esV6HWvNqdmo0").subscribe(data => {
+  calculateradius() {
+    for (let i = 0; i < this.markers.length; i++) {
+      this.http.get("https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins="
+        + this.completeAdress.toString() + "&destinations=" + this.markers[i].lat.toString() + "," + this.markers[i].lng.toString()
+        + "&key=AIzaSyAoUXMzvXuuxkZO4JimW1esV6HWvNqdmo0").subscribe(data => {
         this.calculatedTrip = data;
         this.calculatedDistance = data['rows'][0]['elements'][0]['distance']['value'];
-          if (this.calculatedDistance < 5000){
-            this.markersinrange.push({"lat": this.markers[i].lat, "lng": this.markers[i].lng, "label": this.markers[i].label, "locationtolodestination": this.calculatedDistance});
-          } 
-    });
-    } 
-}
+        if (this.calculatedDistance < 5000) {
+          this.markersinrange.push({
+            "lat": this.markers[i].lat,
+            "lng": this.markers[i].lng,
+            "label": this.markers[i].label,
+            "locationtolodestination": this.calculatedDistance
+          });
+        }
+      });
+    }
+  }
 
-  driversinradius(){
+  driversinradius() {
 
   }
 
 
-  ngOnInit() {    
+  ngOnInit() {
     if (window.navigator && window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(
         position => {
           this.geolocationPosition = position,
-          console.log(position),
+            console.log(position),
             this.lat = position.coords.latitude,
             this.lng = position.coords.longitude
-            //this.lng = position.coords.longitude
-            //this.latmarker1 = this.lat + 0.005;
-            //this.lngmarker1 = this.lng + 0.012;
-            this.center.lng = this.lng;
-            this.center.lat = this.lat;
-          new TableSortingExample();
+          //this.lng = position.coords.longitude
+          //this.latmarker1 = this.lat + 0.005;
+          //this.lngmarker1 = this.lng + 0.012;
+          this.center.lng = this.lng;
+          this.center.lat = this.lat;
+
 
           error => {
             switch (error.code) {
@@ -153,23 +166,11 @@ export class BodyComponent implements OnInit {
             }
           }
         })
-    };
+    }
+
   }
 }
-export class TableSortingExample {
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
 
-  dataSource;
-  @ViewChild(MatSort) sort: MatSort;
-
-  /**
-   * Set the sort after the view init since this component will
-   * be able to query its view for the initialized sort.
-   **/
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-  }
-}
 
 
 
