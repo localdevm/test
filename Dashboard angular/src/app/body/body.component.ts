@@ -37,12 +37,12 @@ export class BodyComponent implements OnInit {
   getdata : HttpgetService;
 
   constructor(public GeocodingApiService : GeocodingApiService, public http : HttpClient) {
-   /*this.getdata.getDrivers().subscribe( data => {
+   this.getdata.getDrivers().subscribe( data => {
       this.Gegevens = data;
       console.log(data);
       this.dataSource = new MatTableDataSource(this.Gegevens);
     },
-     error => {console.log(error)});*/
+     error => {console.log(error)});
   }
 
   markers = [
