@@ -1,6 +1,6 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
-import {GeocodingApiService } from '../reversegeocoding.service';
-import {HttpClient} from "@angular/common/http";
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {GeocodingApiService} from '../reversegeocoding.service';
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {MatTableDataSource, MatSort} from '@angular/material';
 import {HttpgetService} from "../httpget.service";
 
@@ -17,9 +17,6 @@ export class BodyComponent implements OnInit {
   title: string = 'IceOnWheels map';
   lat: number;
   lng: number;
-  latmarker1: number;
-  lngmarker1: number;
-  label: string;
   zoom: number = 14;
   center;
   streetName;
@@ -27,7 +24,6 @@ export class BodyComponent implements OnInit {
   postalCode;
   city;
   geocoder;
-  selectedPlace;
   currentLocation;
   completeAdress;
   calculatedTrip;
@@ -39,17 +35,17 @@ export class BodyComponent implements OnInit {
   dataSource;
 
 
+  constructor(public GeocodingApiService: GeocodingApiService, public http: HttpClient, public getdata: HttpgetService) {
+    getdata.getDrivers().subscribe(data => {
+      this.Gegevens = data;
+      this.dataSource = new MatTableDataSource(this.Gegevens);
+      console.log(this.Gegevens);
 
- constructor(public GeocodingApiService: GeocodingApiService, public http: HttpClient, public getdata: HttpgetService) {
-   getdata.getDrivers().subscribe(data => {
-     this.Gegevens = data;
-     this.dataSource = new MatTableDataSource(this.Gegevens);
-     console.log(this.Gegevens);
-   });
+    });
   }
 
 
-  displayedColumns = ['DriverID', 'Name','Availibility'];
+  displayedColumns = ['DriverID', 'Name', 'Availibility'];
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -60,6 +56,7 @@ export class BodyComponent implements OnInit {
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
   }
+
   markers = [
     {
       lat: 51.673858,
@@ -108,8 +105,6 @@ export class BodyComponent implements OnInit {
       this.city = this.currentLocation.results[0]['address_components'][2]['long_name'];
       this.streetName = this.currentLocation.results[0]['address_components'][1]['long_name'];
       this.completeAdress = this.currentLocation.results[0]['formatted_address'];
-      //console.log(data);
-      //console.log("succes");
     });
   }
 
@@ -117,10 +112,13 @@ export class BodyComponent implements OnInit {
     for (let i = 0; i < this.markers.length; i++) {
       this.http.get("https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins="
         + this.completeAdress.toString() + "&destinations=" + this.markers[i].lat.toString() + "," + this.markers[i].lng.toString()
-        + "&key=AIzaSyAoUXMzvXuuxkZO4JimW1esV6HWvNqdmo0").subscribe(data => {
+        + "&key=AIzaSyAoUXMzvXuuxkZO4JimW1esV6HWvNqdmo0",{
+        headers: new HttpHeaders()
+          .set('Access-Control-Allow-Origin', '*')
+      }).subscribe(data => {
         this.calculatedTrip = data;
         this.calculatedDistance = data['rows'][0]['elements'][0]['distance']['value'];
-        if (this.calculatedDistance < 5000) {
+        if (this.calculatedDistance < 5000000) {
           this.markersinrange.push({
             "lat": this.markers[i].lat,
             "lng": this.markers[i].lng,
@@ -130,6 +128,7 @@ export class BodyComponent implements OnInit {
         }
       });
     }
+
   }
 
   driversinradius() {
@@ -138,6 +137,7 @@ export class BodyComponent implements OnInit {
 
 
   ngOnInit() {
+
     if (window.navigator && window.navigator.geolocation) {
       window.navigator.geolocation.getCurrentPosition(
         position => {
@@ -145,11 +145,9 @@ export class BodyComponent implements OnInit {
             console.log(position),
             this.lat = position.coords.latitude,
             this.lng = position.coords.longitude
-          //this.lng = position.coords.longitude
-          //this.latmarker1 = this.lat + 0.005;
-          //this.lngmarker1 = this.lng + 0.012;
           this.center.lng = this.lng;
           this.center.lat = this.lat;
+
 
 
           error => {

@@ -1,11 +1,13 @@
 
-.h1{
+.h1 {
   text-align: center;
 }
-.title{
+
+.title {
   color: hotpink;
   text-align: center;
 }
+
 .example-container {
   display: flex;
   flex-direction: column;
@@ -21,10 +23,26 @@
   color: black;
 }
 
-agm-map{
+agm-map {
   position: absolute;
   right: 100px;
   height: 600px;
-  width:1000px;
+  width: 1000px;
 
+}
+
+.filtert {
+  width: 60%;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }

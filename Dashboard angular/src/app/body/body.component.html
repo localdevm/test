@@ -6,39 +6,45 @@
 <button (click)="calculateradius()"> Show drivers < 5km</button>
 
 <br>
+<div class="row">
+  <div class="column">
+    <mat-table #table [dataSource]="dataSource" class="filtert">
 
-<mat-table #table [dataSource]="dataSource" class="filtert">
+      <!-- Position Column -->
+      <div>
+        <ng-container matColumnDef="DriverID">
+          <mat-header-cell *matHeaderCellDef> DriverID</mat-header-cell>
+          <mat-cell *matCellDef="let Driver" #DriverID> {{Driver.driverID}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Name">
+          <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
+          <mat-cell *matCellDef="let Driver" #Name> {{Driver.name}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Availibility">
+          <mat-header-cell *matHeaderCellDef> Availibility</mat-header-cell>
+          <mat-cell *matCellDef="let Driver" #Availibility>{{Driver.availibility}}</mat-cell>
+        </ng-container>
 
-  <!-- Position Column -->
-  <div>
-    <ng-container matColumnDef="DriverID">
-      <mat-header-cell *matHeaderCellDef> DriverID </mat-header-cell>
-      <mat-cell *matCellDef="let Driver" #DriverID > {{Driver.driverID}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="Name">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let Driver" #Name > {{Driver.name}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="Availibility">
-      <mat-header-cell *matHeaderCellDef> Availibility </mat-header-cell>
-      <mat-cell *matCellDef="let Driver" #Availibility >{{Driver.availibility}}  </mat-cell>
-    </ng-container>
-
-    <!-- Name Column -->
+        <!-- Name Column -->
+      </div>
+      <!-- Name Column -->
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let data; columns: displayedColumns;">{{this.data}}</mat-row>
+    </mat-table>
   </div>
-  <!-- Name Column -->
-  <mat-header-row *matHeaderRowDef="displayedColumns" ></mat-header-row>
-  <mat-row  *matRowDef="let data; columns: displayedColumns;"  >{{this.data}}</mat-row>
-</mat-table>
 
-<agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng">
-  <div *ngFor="let marker of markersinrange" class='agm-info-window-content'>
+  <div class="column">
+    <agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng">
+      <div *ngFor="let marker of markersinrange" class='agm-info-window-content'>
         <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-        <agm-marker [latitude]="marker.lat" [longitude]="marker.lng" [title]= "test" [label]="marker.label" iconUrl="./assets/IceCreamCone_nobackground.png"></agm-marker >
-         <ng-content></ng-content>
+        <agm-marker [latitude]="marker.lat" [longitude]="marker.lng" [title]="test" [label]="marker.label"
+                    iconUrl="./assets/IceCreamCone_nobackground.png"></agm-marker>
+        <ng-content></ng-content>
 
+      </div>
+    </agm-map>
   </div>
-</agm-map>
+</div>
 
 
 
