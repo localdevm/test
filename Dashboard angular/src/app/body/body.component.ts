@@ -1,8 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {GeocodingApiService} from '../reversegeocoding.service';
+import {GeocodingApiService} from '../_services/reversegeocoding.service';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {MatTableDataSource, MatSort} from '@angular/material';
-import {HttpgetService} from "../httpget.service";
+import {HttpgetService} from "../_services/httpget.service";
+
+
+
 
 
 @Component({
@@ -43,6 +46,7 @@ export class BodyComponent implements OnInit {
 
     });
   }
+
 
 
   displayedColumns = ['DriverID', 'Name', 'Availibility'];

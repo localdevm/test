@@ -1,8 +1,8 @@
 import {Component, NgModule, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { Router } from '@angular/router';
-import {HttpgetService} from "../httpget.service";
-import {AuthService} from "../auth.service";
+import {HttpgetService} from "../_services/httpget.service";
+import {AuthService} from "../_services/auth.service";
 
 
 @Component({
