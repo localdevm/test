@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {AuthService} from "../_services/auth.service";
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {Router} from "@angular/router";
-
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { RegDialogComponent } from '../reg-dialog/reg-dialog.component';
 
 @Component({
   selector: 'app-register',

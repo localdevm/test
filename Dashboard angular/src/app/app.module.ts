@@ -27,12 +27,16 @@ import {AgmCoreModule} from "@agm/core";
 import {MatTableModule} from '@angular/material/table';
 import {LoginComponent} from "./login/login.component";
 import {MatDialogModule} from '@angular/material/dialog';
+import { RegDialogComponent } from './reg-dialog/reg-dialog.component';
 
 
 
 const routes: Routes = [
  {
    path: 'home', component: HomeComponent
+ },
+ {
+  path: '', component: HomeComponent
  },
  {
    path: 'request', component: RequestComponent
@@ -62,7 +66,8 @@ const routes: Routes = [
     RegisterComponent,
     HomeComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    RegDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +82,7 @@ const routes: Routes = [
     MatTableModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
-    MatDialogModule,
+    MatDialogModule,  
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAoUXMzvXuuxkZO4JimW1esV6HWvNqdmo0'
     })
