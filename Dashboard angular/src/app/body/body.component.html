@@ -1,14 +1,6 @@
-<h1>{{ title }}</h1>
-<h3>{{completeAdress}}</h3>
-<h3>{{calculatedDistance}}</h3>
 
-<button (click)="getlocation()"> get address</button>
-<button (click)="calculateradius()"> Show drivers < 5km</button>
-<button (click)="useJwtHelper()" class="btn btn-primary">click here to check web tokens</button>
-
-<br>
 <div class="row">
-  <div class="column">
+  <div class="column links">
     <mat-table #table [dataSource]="dataSource" class="filtert">
 
       <!-- Position Column -->
@@ -34,7 +26,7 @@
     </mat-table>
   </div>
 
-  <div class="column">
+  <div class="column rechts">
     <agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng">
       <div *ngFor="let marker of markersinrange" class='agm-info-window-content'>
         <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>

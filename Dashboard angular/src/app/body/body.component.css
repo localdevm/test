@@ -25,19 +25,23 @@
 
 agm-map {
   position: absolute;
-  right: 100px;
-  height: 600px;
-  width: 1000px;
+  height: 100vh;
+  width: 100%;
 
 }
 
 .filtert {
-  width: 60%;
+  width: 100%;
+  height: 100vh;
 }
 
-.column {
+.column{
   float: left;
-  width: 50%;
+  width: 30%;
+}
+
+.column rechts{
+  width: 60%
 }
 
 /* Clear floats after the columns */
@@ -47,12 +51,3 @@ agm-map {
   clear: both;
 }
 
-
-.eerst{
-  background-color: red;
-  height: 100vh;
-}
-
-.tweede{
-  background-color: blue;
-}
