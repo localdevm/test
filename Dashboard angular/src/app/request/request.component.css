@@ -85,3 +85,7 @@ form{
         color: white;
         transition: 1s;
 }
+
+.insidewrap{
+    height: 100vh;
+}
