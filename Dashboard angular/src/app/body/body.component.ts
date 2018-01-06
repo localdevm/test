@@ -43,8 +43,7 @@ export class BodyComponent implements OnInit {
     getdata.getDrivers().subscribe(data => {
       this.Gegevens = data;
       this.dataSource = new MatTableDataSource(this.Gegevens);
-      console.log(this.Gegevens);
-
+      //console.log(this.Gegevens);
     });
   }
 
@@ -111,6 +110,20 @@ export class BodyComponent implements OnInit {
       this.streetName = this.currentLocation.results[0]['address_components'][1]['long_name'];
       this.completeAdress = this.currentLocation.results[0]['formatted_address'];
     });
+
+    for(let i = 0; i < this.Gegevens.length; i++){
+      this.http.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + this.Gegevens[i]['adress'] 
+      + "&key=AIzaSyAoUXMzvXuuxkZO4JimW1esV6HWvNqdmo0").subscribe(data => {
+        console.log("mijndata");
+        console.log(data);
+        this.markers.push({
+          "lat" : data['results'][0]['geometry']['location']['lat'],
+          "lng" : data['results'][0]['geometry']['location']['lng'],
+          "label" : this.Gegevens[i]['name']
+        });
+      })
+    }
+    console.log(this.markers);
   }
 
   calculateradius() {
