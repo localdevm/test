@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpreqService } from '../httpreq.service';
-import {HttpgetService} from '../httpget.service';
+import {HttpreqService } from '../_services/httpreq.service';
+import {HttpgetService} from '../_services/httpget.service';
 import {sendRequest} from "selenium-webdriver/http";
 import {HttpClient} from "@angular/common/http";
 
@@ -20,7 +20,7 @@ export class RequestComponent implements OnInit{
     this.getdata.getDrivers().subscribe(data => {
       this.Gegevens = data;
     });
-    
+
   }
 
   Drivers= [
@@ -33,7 +33,7 @@ export class RequestComponent implements OnInit{
     }
   ];
 
-  
+
   onAddDriver(name: string, adress : string, availibility: boolean, phonenumber: string) {
     this.Drivers.push({
       Name: name,
@@ -48,6 +48,6 @@ export class RequestComponent implements OnInit{
     //this.http.get('http://iceonwheels20171117020935.azurewebsites.net/api/drivers').subscribe(data =>{
       //this.Gegevens = data['Drivers'];
     //})
-    
+
   }
 }
