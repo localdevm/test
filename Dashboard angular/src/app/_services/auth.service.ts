@@ -19,14 +19,28 @@ export class AuthService {
   }
 
 
-  public signupUser(email: string, password:string,adress:string,name:string,Phonenumber:any){
-   return this.http.post('http://iceonwheels20171117020935.azurewebsites.net/api/Drivers',{
-      email: email,
-      name: name,
-      pasword:password,
-      adress:adress,
-      Phonenumber:Phonenumber,
-    })
+  public signupUser(usertype:string,email: string, password:string,adress:string,name:string,Phonenumber:any){
+    if (usertype == "0"){
+      return this.http.post('http://iceonwheels20171117020935.azurewebsites.net/api/Customers',{
+        email: email,
+        name: name,
+        pasword:password,
+        adress:adress,
+        Phonenumber:Phonenumber,
+      })
+      
+    }
+
+    else if (usertype == "1"){
+      return this.http.post('http://iceonwheels20171117020935.azurewebsites.net/api/Drivers',{
+        email: email,
+        name: name,
+        pasword:password,
+        adress:adress,
+        Phonenumber:Phonenumber,
+      })
+    }
+   
 
   }
 

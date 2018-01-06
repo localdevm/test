@@ -26,6 +26,7 @@ import { JsonPipe } from '@angular/common';
 import {AgmCoreModule} from "@agm/core";
 import {MatTableModule} from '@angular/material/table';
 import {LoginComponent} from "./login/login.component";
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -76,6 +77,7 @@ const routes: Routes = [
     MatTableModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
+    MatDialogModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAoUXMzvXuuxkZO4JimW1esV6HWvNqdmo0'
     })

@@ -23,8 +23,9 @@ export class RegisterComponent implements OnInit {
     const adress = form.value.adress;
     const phonenumber = form.value.Phonenumber;
     const name = form.value.name;
+    const usertype = form.value.usertype;
 
-    this.authService.signupUser(email,password,adress,name,phonenumber).subscribe(data =>{
+    this.authService.signupUser(usertype,email,password,adress,name,phonenumber).subscribe(data =>{
       if(data){
         this.authService.setToken(data);
         console.log(data);
