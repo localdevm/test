@@ -46,3 +46,13 @@ agm-map {
   display: table;
   clear: both;
 }
+
+
+.eerst{
+  background-color: red;
+  height: 100vh;
+}
+
+.tweede{
+  background-color: blue;
+}
