@@ -19,7 +19,7 @@
         </ng-container>
         <ng-container matColumnDef="Name">
           <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
-          <mat-cell *matCellDef="let Driver" #Name> {{Driver.name}}</mat-cell>
+          <mat-cell *matCellDef="let Driver" #Name (click)="detailsDriver()"> {{Driver.name}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="Availibility">
           <mat-header-cell *matHeaderCellDef> Availibility</mat-header-cell>

@@ -29,6 +29,7 @@ export class BodyComponent implements OnInit {
   geocoder;
   currentLocation;
   completeAdress;
+  Driver;
   calculatedTrip;
   calculatedDistance;
   markersinrange = [];
@@ -134,7 +135,9 @@ export class BodyComponent implements OnInit {
     }
 
   }
+  detailsDriver(){
 
+  }
   driversinradius() {
 
   }

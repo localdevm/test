@@ -30,7 +30,7 @@ export class AuthService {
 
   }
 
-  public signinUser(email:string, password:string){
+/*  public signinUser(email:string, password:string){
 
     tokenNotExpired();
     return this.http.post("http://iceonwheels20171117020935.azurewebsites.net/connect/token", {
@@ -46,7 +46,7 @@ export class AuthService {
         }
       );
 
-  }
+  }*/
 
   public setToken(token){
     if(token["access_token"]){
@@ -59,7 +59,7 @@ export class AuthService {
     }
   }
 
-  login(username: string, password: string): Observable<boolean> {
+ public signinUser(username: string, password: string): Observable<boolean> {
     return this.http.post('http://iceonwheels20171117020935.azurewebsites.net/api/Drivers', JSON.stringify({ username: username, password: password }))
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
